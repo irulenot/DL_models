@@ -73,7 +73,7 @@ def main():
         # display the epoch training loss
         print("epoch : {}/{}, recon loss = {:.8f}".format(epoch + 1, epochs, loss))
 
-    torch.save(model.state_dict(), '../weights/AE_example.pt')
+    torch.save(model.state_dict(), '../weights/AE_MNIST.pt')
 
     test_dataset = torchvision.datasets.MNIST(
         root="~/torch_datasets", train=False, transform=transform, download=True
