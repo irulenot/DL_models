@@ -1,1 +1,2 @@
-hello world
+SETUP
+Create conda environment with environment.yml
