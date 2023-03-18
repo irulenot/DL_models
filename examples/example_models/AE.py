@@ -1,3 +1,5 @@
+# SOURCE: https://medium.com/pytorch/implementing-an-autoencoder-in-pytorch-19baa22647d1
+
 import torch
 import torch.nn as nn
 

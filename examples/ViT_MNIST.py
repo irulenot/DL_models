@@ -1,6 +1,8 @@
+# SOURCE: https://towardsdatascience.com/a-demonstration-of-using-vision-transformers-in-pytorch-mnist-handwritten-digit-recognition-407eafbc15b0
+
 import torch
 import torchvision
-from models.ViT import ViT
+from examples.example_models.ViT import ViT
 import time
 import torch.nn.functional as F
 import torch.optim as optim
@@ -50,7 +52,7 @@ def evaluate(model, data_loader, loss_history):
 def main():
     torch.manual_seed(42)
 
-    DOWNLOAD_PATH = '../data/mnist'
+    DOWNLOAD_PATH = 'example_data/mnist'
     BATCH_SIZE_TRAIN = 100
     BATCH_SIZE_TEST = 1000
 
@@ -78,7 +80,7 @@ def main():
         train_epoch(model, optimizer, train_loader, train_loss_history)
         evaluate(model, test_loader, test_loss_history)
 
-    torch.save(model.state_dict(), '../weights/ViT_MNIST.pt')
+    torch.save(model.state_dict(), 'example_weights/ViT_MNIST.pt')
 
     print('Execution time:', '{:5.2f}'.format(time.time() - start_time), 'seconds')
 

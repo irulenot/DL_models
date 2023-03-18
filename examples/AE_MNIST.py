@@ -1,6 +1,8 @@
+# SOURCE: https://medium.com/pytorch/implementing-an-autoencoder-in-pytorch-19baa22647d1
+
 import matplotlib.pyplot as plt
 
-from models.AE import AE
+from examples.example_models.AE import AE
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -14,7 +16,7 @@ def main():
     torch.backends.cudnn.deterministic = True
 
     batch_size = 512
-    epochs = 20
+    epochs = 5
     learning_rate = 1e-3
 
     transform = torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
@@ -73,7 +75,7 @@ def main():
         # display the epoch training loss
         print("epoch : {}/{}, recon loss = {:.8f}".format(epoch + 1, epochs, loss))
 
-    torch.save(model.state_dict(), '../weights/AE_MNIST.pt')
+    torch.save(model.state_dict(), 'example_weights/AE_MNIST.pt')
 
     test_dataset = torchvision.datasets.MNIST(
         root="~/torch_datasets", train=False, transform=transform, download=True

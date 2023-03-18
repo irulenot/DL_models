@@ -1,3 +1,5 @@
+# SOURCE: https://towardsdatascience.com/a-demonstration-of-using-vision-transformers-in-pytorch-mnist-handwritten-digit-recognition-407eafbc15b0
+
 import torch
 import torch.nn.functional as F
 

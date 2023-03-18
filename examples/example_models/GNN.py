@@ -1,3 +1,5 @@
+# SOURCE: https://github.com/DebasmitaGhose/PyTorch_Graph_Neural_Network_MNIST/blob/master/gnn_mnist.py
+
 import argparse
 import torch
 import torch.nn as nn

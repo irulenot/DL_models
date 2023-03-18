@@ -1,12 +1,13 @@
-from models.GNN import GraphNet
+# SOURCE: https://github.com/DebasmitaGhose/PyTorch_Graph_Neural_Network_MNIST/blob/master/gnn_mnist.py
+
+from examples.example_models.GNN import GraphNet
 import argparse
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
 import numpy as np
-from scipy.spatial.distance import cdist
+
 
 def train(args, model, device, train_loader, optimizer, epoch):
     model.train()
@@ -63,14 +64,14 @@ def main():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     kwargs = {'num_workers': 1, 'pin_memory': True} if use_cuda else {}
     train_loader = torch.utils.data.DataLoader(
-        datasets.MNIST('../data', train=True, download=True,
+        datasets.MNIST('example_data', train=True, download=True,
                        transform=transforms.Compose([
                            transforms.ToTensor(),
                            transforms.Normalize((0.1307,), (0.3081,))
                        ])),
         batch_size=args.batch_size, shuffle=True, **kwargs)
     test_loader = torch.utils.data.DataLoader(
-        datasets.MNIST('../data', train=False, transform=transforms.Compose([
+        datasets.MNIST('example_data', train=False, transform=transforms.Compose([
             transforms.ToTensor(),
             transforms.Normalize((0.1307,), (0.3081,))
         ])),
@@ -88,7 +89,7 @@ def main():
         train(args, model, device, train_loader, optimizer, epoch)
         test(args, model, device, test_loader)
 
-    torch.save(model.state_dict(), '../weights/GNN_MNIST.pt')
+    torch.save(model.state_dict(), 'example_weights/GNN_MNIST.pt')
 
 if __name__ == '__main__':
     main()
