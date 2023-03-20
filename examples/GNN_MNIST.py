@@ -1,12 +1,14 @@
 # SOURCE: https://github.com/DebasmitaGhose/PyTorch_Graph_Neural_Network_MNIST/blob/master/gnn_mnist.py
 
-from examples.example_models.GNN import GraphNet
 import argparse
+
+import numpy as np
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
 from torchvision import datasets, transforms
-import numpy as np
+
+from examples.example_models.GNN import GraphNet
 
 
 def train(args, model, device, train_loader, optimizer, epoch):

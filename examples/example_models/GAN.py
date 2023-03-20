@@ -4,10 +4,6 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import torch.optim as optim
-from torchvision import datasets, transforms
-from torch.autograd import Variable
-from torchvision.utils import save_image
 
 class Generator(nn.Module):
     def __init__(self, g_input_dim, g_output_dim):

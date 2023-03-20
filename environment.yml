@@ -4,6 +4,7 @@ channels:
   - nvidia
   - defaults
 dependencies:
+  - appdirs=1.4.4=pyhd3eb1b0_0
   - blas=1.0=mkl
   - brotlipy=0.7.0=py310h2bbff1b_1002
   - bzip2=1.0.8=he774522_0
@@ -41,8 +42,10 @@ dependencies:
   - flit-core=3.6.0=pyhd3eb1b0_0
   - freetype=2.12.1=ha860e81_0
   - giflib=5.2.1=h8cc25b3_3
+  - icc_rt=2022.1.0=h6049295_2
   - idna=3.4=py310haa95532_0
   - intel-openmp=2021.4.0=haa95532_3556
+  - joblib=1.1.1=py310haa95532_0
   - jpeg=9e=h2bbff1b_1
   - lerc=3.0=hd77b12b_0
   - libcublas=11.9.2.110=0
@@ -74,7 +77,9 @@ dependencies:
   - nsight-compute=2023.1.0.15=0
   - numpy-base=1.23.5=py310h04254f7_0
   - openssl=1.1.1t=h2bbff1b_0
+  - packaging=23.0=py310haa95532_0
   - pip=23.0.1=py310haa95532_0
+  - pooch=1.4.0=pyhd3eb1b0_0
   - pycparser=2.21=pyhd3eb1b0_0
   - pyopenssl=23.0.0=py310haa95532_0
   - pysocks=1.7.1=py310haa95532_0
@@ -82,9 +87,11 @@ dependencies:
   - pytorch=1.13.1=py3.10_cuda11.6_cudnn8_0
   - pytorch-cuda=11.6=h867d48c_1
   - pytorch-mutex=1.0=cuda
+  - scikit-learn=1.2.1=py310hd77b12b_0
   - setuptools=65.6.3=py310haa95532_0
   - six=1.16.0=pyhd3eb1b0_1
   - sqlite=3.40.1=h2bbff1b_0
+  - threadpoolctl=2.2.0=pyh0d69192_0
   - tk=8.6.12=h2bbff1b_0
   - typing_extensions=4.4.0=py310haa95532_0
   - tzdata=2022g=h04d1e81_0
@@ -97,23 +104,48 @@ dependencies:
   - zlib=1.2.13=h8cc25b3_0
   - zstd=1.5.2=h19a0ad4_0
   - pip:
+    - aiohttp==3.8.4
+    - aiosignal==1.3.1
+    - async-timeout==4.0.2
+    - attrs==22.2.0
     - chardet==5.1.0
     - charset-normalizer==3.1.0
+    - colorama==0.4.6
     - contourpy==1.0.7
     - cycler==0.11.0
     - einops==0.6.0
     - fonttools==4.39.0
+    - frozenlist==1.3.3
+    - fsspec==2023.3.0
+    - jinja2==3.1.2
     - kiwisolver==1.4.4
+    - lightning-utilities==0.8.0
+    - markupsafe==2.1.2
     - matplotlib==3.7.1
+    - multidict==6.0.4
     - numpy==1.24.2
-    - packaging==23.0
+    - pandas==1.5.3
     - pillow==9.4.0
+    - psutil==5.9.4
     - pyparsing==3.0.9
     - python-dateutil==2.8.2
+    - pytorch-lightning==2.0.0
+    - pytz==2022.7.1
+    - pyyaml==6.0
     - requests==2.28.2
     - scipy==1.10.1
+    - sklearn==0.0.post1
+    - torch-cluster==1.6.1+pt113cu116
+    - torch-geometric==2.2.0
+    - torch-scatter==2.1.1+pt113cu116
+    - torch-sparse==0.6.17+pt113cu116
+    - torch-spline-conv==1.2.2+pt113cu116
     - torchaudio==0.13.1
+    - torchmetrics==0.11.4
     - torchvision==0.14.1
+    - tqdm==4.65.0
     - typing-extensions==4.5.0
     - urllib3==1.26.15
+    - xgboost==1.7.4
+    - yarl==1.8.2
 prefix: C:\Users\abmst\anaconda3\envs\DL_models

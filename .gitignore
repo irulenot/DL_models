@@ -1,4 +1,8 @@
 examples/example_data/*
 examples/example_weights/*
+kaggle/kaggle_data/*
+kaggle/kaggle_weights/*
+kaggle/lightning_logs/*
+kaggle/kaggle_submissions/*
 *.idea*
 *__pycache__*

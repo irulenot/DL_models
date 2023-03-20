@@ -4,8 +4,9 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torchvision import datasets, transforms
 from torch.autograd import Variable
+from torchvision import datasets, transforms
+
 from examples.example_models.GAN import Generator, Discriminator
 
 

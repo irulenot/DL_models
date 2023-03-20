@@ -1,11 +1,14 @@
 # SOURCE: https://towardsdatascience.com/a-demonstration-of-using-vision-transformers-in-pytorch-mnist-handwritten-digit-recognition-407eafbc15b0
 
-import torch
-import torchvision
-from examples.example_models.ViT import ViT
 import time
+
+import torch
 import torch.nn.functional as F
 import torch.optim as optim
+import torchvision
+
+from examples.example_models.ViT import ViT
+
 
 def train_epoch(model, optimizer, data_loader, loss_history):
     total_samples = len(data_loader.dataset)

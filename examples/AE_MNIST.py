@@ -1,12 +1,13 @@
 # SOURCE: https://medium.com/pytorch/implementing-an-autoencoder-in-pytorch-19baa22647d1
 
 import matplotlib.pyplot as plt
-
-from examples.example_models.AE import AE
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import torchvision
+
+from examples.example_models.AE import AE
+
 
 def main():
 
