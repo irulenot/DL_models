@@ -20,7 +20,7 @@ from torchvision.transforms import Compose, ToTensor, Lambda
 from torchvision.datasets.mnist import MNIST, FashionMNIST
 
 # Import of custom models
-from examples.example_models.DDPM import MyDDPM, MyUNet
+from examples.example_models.DDPM_simple import MyDDPM, MyUNet
 
 # Setting reproducibility
 SEED = 0
@@ -29,7 +29,7 @@ np.random.seed(SEED)
 torch.manual_seed(SEED)
 
 # Definitions
-STORE_PATH_MNIST = f"example_weights/DDPM_MNIST.pt"
+STORE_PATH_MNIST = f"example_weights/DDPM_MNIST_simple.pt"
 STORE_PATH_FASHION = f"ddpm_model_fashion.pt"
 
 
@@ -147,7 +147,7 @@ def generate_new_images(ddpm, n_samples=16, device=None, frames_per_gif=100, gif
     return x
 
 
-def training_loop(ddpm, loader, n_epochs, optim, device, display=False, store_path="ddpm_model.pt"):
+def training_loop(ddpm, loader, n_epochs, optim, device, display=False, store_path="ddpm_model_simple.pt"):
     mse = nn.MSELoss()
     best_loss = float("inf")
     n_steps = ddpm.n_steps
@@ -197,14 +197,14 @@ def main():
     parser = ArgumentParser()
     parser.add_argument("--no_train", action="store_true", help="Whether to train a new model or not")
     parser.add_argument("--fashion", action="store_true", help="Uses MNIST if true, Fashion MNIST otherwise")
-    parser.add_argument("--bs", type=int, default=128, help="Batch size")
+    parser.add_argument("--bs", type=int, default=100, help="Batch size")
     parser.add_argument("--epochs", type=int, default=5, help="Number of epochs")
     parser.add_argument("--lr", type=float, default=0.001, help="Learning rate")
     args = vars(parser.parse_args())
     print(args)
 
     # Model store path
-    store_path = "ddpm_fashion.pt" if args["fashion"] else "example_weights/DDPM_MNIST.pt"
+    store_path = "ddpm_fashion.pt" if args["fashion"] else "example_weights/DDPM_MNIST_simple.pt"
 
     # Loading the data (converting each image into a tensor and normalizing between [-1, 1])
     transform = Compose([
@@ -221,10 +221,10 @@ def main():
 
     # Defining model
     n_steps, min_beta, max_beta = 1000, 10 ** -4, 0.02  # Originally used by the authors
-    ddpm = MyDDPM(MyUNet(n_steps), n_steps=n_steps, min_beta=min_beta, max_beta=max_beta, device=device)
+    ddpm = MyDDPM(MyUNet(784, n_steps=n_steps), n_steps=n_steps, min_beta=min_beta, max_beta=max_beta, device=device)
 
     # Optionally, load a pre-trained model that will be further trained
-    ddpm.load_state_dict(torch.load(store_path, map_location=device))
+    # ddpm.load_state_dict(torch.load(store_path, map_location=device))
 
     # Optionally, show a batch of regular images
     # show_first_batch(loader)
@@ -242,7 +242,7 @@ def main():
         training_loop(ddpm, loader, n_epochs, optim=Adam(ddpm.parameters(), lr), device=device, store_path=store_path)
 
     # Loading the trained model
-    best_model = MyDDPM(MyUNet(), n_steps=n_steps, device=device)
+    best_model = MyDDPM(MyUNet(784), n_steps=n_steps, device=device)
     best_model.load_state_dict(torch.load(store_path, map_location=device))
     best_model.eval()
     print("Model loaded: Generating new images")
